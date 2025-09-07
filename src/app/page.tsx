@@ -219,8 +219,17 @@ export default function HomePage() {
       // Word completion is based on character count, not spelling correctness
       const wordLength = expectedWord.length;
       
-      // Always count characters regardless of spelling
+      // Count correct characters for this word
+      let correctCharsInWord = 0;
+      for (let i = 0; i < Math.min(word.length, expectedWord.length); i++) {
+        if (word[i] === expectedWord[i]) {
+          correctCharsInWord++;
+        }
+      }
+      
+      // Update character counts
       setTotalChars(prev => prev + wordLength);
+      setCorrectChars(prev => prev + correctCharsInWord);
       setTypedWords(prev => [...prev, word]);
       setCurrentWordIndex(prev => prev + 1);
       setCurrentInput('');
@@ -234,7 +243,7 @@ export default function HomePage() {
       setTimeout(() => scrollToCurrentWord(), 100);
       
       // Calculate accuracy based on character count, not spelling correctness
-      const newAccuracy = (correctChars / (totalChars + wordLength)) * 100;
+      const newAccuracy = ((correctChars + correctCharsInWord) / (totalChars + wordLength)) * 100;
       setAccuracy(Math.round(newAccuracy));
       
       // Ensure input is focused and ready for next word
@@ -258,23 +267,25 @@ export default function HomePage() {
     // Update current character index for visual feedback
     setCurrentCharIndex(cleanValue.length);
     
-    // Check character accuracy for current word
-    if (cleanValue.length > 0) {
-      const currentChar = cleanValue[cleanValue.length - 1];
-      const expectedChar = currentWord[cleanValue.length - 1];
-      
-      if (currentChar === expectedChar) {
-        // Remove from errors if it was previously marked as error
-        setErrors(prev => {
-          const newErrors = new Set(prev);
-          newErrors.delete(cleanValue.length - 1);
-          return newErrors;
-        });
-      } else {
-        // Mark as error (including spaces)
-        setErrors(prev => new Set([...prev, cleanValue.length - 1]));
-      }
-    }
+     // Check character accuracy for current word
+     if (cleanValue.length > 0) {
+       const currentChar = cleanValue[cleanValue.length - 1];
+       const expectedChar = currentWord[cleanValue.length - 1];
+       
+       if (currentChar === expectedChar) {
+         // Remove from errors if it was previously marked as error
+         setErrors(prev => {
+           const newErrors = new Set(prev);
+           newErrors.delete(cleanValue.length - 1);
+           return newErrors;
+         });
+         // Increment correct characters
+         setCorrectChars(prev => prev + 1);
+       } else {
+         // Mark as error (including spaces)
+         setErrors(prev => new Set([...prev, cleanValue.length - 1]));
+       }
+     }
     
 
     
@@ -361,14 +372,20 @@ export default function HomePage() {
       // Remove the last word from typed words
       setTypedWords(prev => prev.slice(0, -1));
       
-      // Update accuracy and character counts
-      const wordLength = demoWords[newWordIndex].length;
-      const wasCorrect = previousWord === demoWords[newWordIndex];
-      
-      if (wasCorrect) {
-        setCorrectChars(prev => Math.max(0, prev - wordLength));
-      }
-      setTotalChars(prev => Math.max(0, prev - wordLength));
+       // Update accuracy and character counts
+       const wordLength = demoWords[newWordIndex].length;
+       
+       // Count correct characters in the word we're going back to
+       let correctCharsInWord = 0;
+       for (let i = 0; i < Math.min(previousWord.length, demoWords[newWordIndex].length); i++) {
+         if (previousWord[i] === demoWords[newWordIndex][i]) {
+           correctCharsInWord++;
+         }
+       }
+       
+       // Subtract the character counts for the word we're going back to
+       setCorrectChars(prev => Math.max(0, prev - correctCharsInWord));
+       setTotalChars(prev => Math.max(0, prev - wordLength));
       
       // Remove from incorrect words if it was there
       setIncorrectWords(prev => {
