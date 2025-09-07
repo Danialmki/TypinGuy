@@ -1,0 +1,21 @@
+export const simpleWords = [
+  "the", "be", "to", "of", "and", "a", "in", "that", "have", "i", "it", "for", "not", "on", "with", "he", "as", "you", "do", "at",
+  "this", "but", "his", "by", "from", "they", "she", "or", "an", "will", "my", "one", "all", "would", "there", "their",
+  "what", "so", "up", "out", "if", "about", "who", "get", "which", "go", "me", "when", "make", "can", "like", "time",
+  "no", "just", "him", "know", "take", "people", "into", "year", "your", "good", "some", "could", "them", "see", "other",
+  "than", "then", "now", "look", "only", "come", "its", "over", "think", "also", "back", "after", "use", "two", "how",
+  "our", "work", "first", "well", "way", "even", "new", "want", "because", "any", "these", "give", "day", "most", "us",
+  "is", "was", "are", "been", "has", "had", "were", "said", "each", "which", "their", "said", "if", "will", "up", "other",
+  "about", "out", "many", "then", "them", "these", "so", "some", "her", "would", "make", "like", "into", "him", "time",
+  "has", "two", "more", "go", "no", "way", "could", "my", "than", "first", "water", "been", "call", "who", "oil", "its",
+  "now", "find", "long", "down", "day", "did", "get", "come", "made", "may", "part", "over", "new", "sound", "take",
+  "only", "little", "work", "know", "place", "year", "live", "me", "back", "give", "most", "very", "good", "man", "think",
+  "say", "great", "where", "help", "through", "much", "before", "line", "right", "too", "means", "old", "any", "same",
+  "tell", "boy", "follow", "came", "want", "show", "also", "around", "form", "three", "small", "set", "put", "end",
+  "why", "again", "turn", "here", "why", "let", "help", "put", "every", "good", "through", "much", "before", "line",
+  "right", "too", "means", "old", "any", "same", "tell", "boy", "follow", "came", "want", "show", "also", "around",
+  "form", "three", "small", "set", "put", "end", "why", "again", "turn", "here", "why", "let", "help", "put", "every",
+  "good", "through", "much", "before", "line", "right", "too", "means", "old", "any", "same", "tell", "boy", "follow",
+  "came", "want", "show", "also", "around", "form", "three", "small", "set", "put", "end", "why", "again", "turn",
+  "here", "why", "let", "help", "put", "every", "good", "through", "much", "before", "line", "right", "too", "means"
+];
