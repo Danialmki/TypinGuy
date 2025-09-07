@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Timer, Keyboard, BarChart3, RefreshCw, ChevronRight, Settings, Minus, Plus } from 'lucide-react';
@@ -402,10 +403,17 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       {/* SVG Background Element - Designated for future use */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {/* This div is designated for SVG background elements */}
-        <div className="absolute inset-0 opacity-10">
-          {/* SVG background will be added here */}
+        <div className="absolute inset-0 opacity-60">
+          <Image
+            src="/color-lines.png"
+            alt="Typing illustration background"
+            width={1800}
+            height={1200}
+            className="w-full h-full object-cover"
+            priority
+          />
         </div>
         {/* Subtle geometric pattern overlay */}
         <div className="absolute inset-0 opacity-5">
@@ -415,52 +423,57 @@ export default function HomePage() {
 
       {/* Navigation */}
       <nav className="relative z-10 border-b border-gray-200 bg-white backdrop-blur-md">
-        <div className="container mx-auto px-4 py-4">
+        <div className="container mx-auto px-4 py-2">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <Link href="/" className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-                <Keyboard className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                TypinGuy
-              </span>
+            <Link href="/">
+        <Image
+                src="/file.svg"
+                alt="TypinGuy Logo"
+                width={64}
+                height={64}
+                className="h-12 md:h-16 w-auto"
+              />
             </Link>
 
             {/* Center Navigation Links */}
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/features" className="text-gray-700 hover:text-blue-600 transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+              <Link href="/features" className="text-gray-700 hover:text-[#2196F3] transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
                 Features
               </Link>
-              <Link href="/pricing" className="text-gray-700 hover:text-blue-600 transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+              <Link href="/pricing" className="text-gray-700 hover:text-[#2196F3] transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
                 Pricing
               </Link>
-              <Link href="/about" className="text-gray-700 hover:text-blue-600 transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+              <Link href="/about" className="text-gray-700 hover:text-[#2196F3] transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
                 About
               </Link>
-              <Link href="/blog" className="text-gray-700 hover:text-blue-600 transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+              <Link href="/blog" className="text-gray-700 hover:text-[#2196F3] transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
                 Blog
               </Link>
-              <Link href="/contact" className="text-gray-700 hover:text-blue-600 transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+              <Link href="/contact" className="text-gray-700 hover:text-[#2196F3] transition-colors font-medium" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
                 Contact
               </Link>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" className="text-gray-700 hover:text-blue-600 hover:bg-blue-50" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
-                Login
-              </Button>
-              <Button className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-6 py-2 rounded-lg font-medium shadow-lg hover:shadow-xl transition-all duration-200" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
-                Join up
-              </Button>
+              <Link href="/login">
+                <Button className="bg-white text-gray-700 hover:bg-[#22c55e] hover:text-white px-6 py-3 text-lg font-semibold rounded-none border-2 border-gray-700 hover:border-[#22c55e] transition-all duration-300" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+                  Login
+                </Button>
+              </Link>
+              <Link href="/register">
+                <Button className="bg-[#2196F3] hover:bg-[#22c55e] text-white px-6 py-3 text-lg font-semibold rounded-none border-2 border-[#2196F3] hover:border-[#22c55e] transition-all duration-300" style={{ fontFamily: "'Josefin Sans', sans-serif", fontWeight: 300 }}>
+                  Join up
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section - 100vh */}
-      <section className="relative h-screen flex items-center justify-start px-8 bg-white">
+      <section className="relative h-screen flex items-center justify-start px-8 bg-transparent z-10">
         <div className="max-w-4xl ml-16">
           <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-gray-900 leading-tight mb-6" style={{ fontFamily: '"Delius", cursive' }}>
             Test Your Typing Speed!
@@ -468,7 +481,11 @@ export default function HomePage() {
           <p ref={heroTextRef} className="text-xl md:text-2xl text-gray-700 max-w-3xl leading-relaxed mb-8" style={{ fontFamily: '"Delius", cursive' }}>
             Test your speed and accuracy using our free typing test. Use your results to see how far a proper typing method could take you.
           </p>
-          <Button className="bg-white text-gray-900 hover:bg-gray-100 px-12 py-6 text-2xl font-semibold rounded-none border-2 border-black hover:border-gray-800 transition-all duration-300 group mt-12" style={{ fontFamily: '"Delius", cursive' }}>
+          <Button 
+            onClick={() => document.getElementById('cta-section')?.scrollIntoView({ behavior: 'smooth' })}
+            className="bg-white text-[#2196F3] hover:bg-gray-100 px-12 py-6 text-2xl font-semibold rounded-none border-2 border-[#2196F3] hover:border-[#2196F3]/80 transition-all duration-300 group mt-12" 
+            style={{ fontFamily: '"Delius", cursive' }}
+          >
             Try it out
             <ChevronRight className="ml-4 h-6 w-6 group-hover:translate-x-2 transition-transform duration-300" />
           </Button>
@@ -488,7 +505,7 @@ export default function HomePage() {
                   </div>
 
                             {/* Typing Test Demo */}
-                  <div className="bg-gradient-to-br from-white via-gray-50 to-blue-50 rounded-3xl p-8 md:p-12 w-full mx-auto shadow-2xl border border-white/20 backdrop-blur-sm">
+                  <div className="bg-gray-50 rounded-3xl p-8 md:p-12 w-full mx-auto shadow-2xl border border-white/20">
             {/* Typing Area - Responsive height */}
             <div className="mb-8 h-[60vh] md:h-[90vh] flex flex-col">
 
@@ -591,7 +608,7 @@ export default function HomePage() {
                                  return (
                                    <span
                                      key={charIndex}
-                                     className="text-white bg-blue-500 px-1 md:px-2 py-1 md:py-3 text-sm md:text-3xl lg:text-4xl flex items-center justify-center text-center"
+                                     className="text-white bg-[#2196F3] px-1 md:px-2 py-1 md:py-3 text-sm md:text-3xl lg:text-4xl flex items-center justify-center text-center"
                                      style={{ letterSpacing: '0.1em', fontWeight: 100 }}
                                      ref={currentLetterRef}
                                    >
@@ -691,7 +708,7 @@ export default function HomePage() {
                           <div className="text-white/80 text-[0.70rem] uppercase">
                             seconds
                           </div>
-                        </div>
+        </div>
               <Button 
                 variant="outline" 
                           size="icon"
@@ -735,7 +752,10 @@ export default function HomePage() {
                     <DrawerFooter>
                       <Button 
                         className="bg-white text-[#2196F3] hover:bg-gray-100 border-white"
-                        onClick={() => handleTimeChange(selectedTime)}
+                        onClick={() => {
+                          handleTimeChange(selectedTime);
+                          document.getElementById('cta-section')?.scrollIntoView({ behavior: 'smooth' });
+                        }}
                       >
                         Start Test
                       </Button>
@@ -780,10 +800,10 @@ export default function HomePage() {
                   <section className="h-screen py-20 px-8">
                     <div className="h-full flex flex-col justify-center">
                                               <div className="text-center mb-16">
-                          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 font-['var(--font-josefin)',sans-serif]">
+                          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                             Frequently Asked Questions
                           </h2>
-                          <p className="text-xl text-white max-w-2xl mx-auto font-['var(--font-josefin)',sans-serif]">
+                          <p className="text-xl text-white max-w-2xl mx-auto" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                             Everything you need to know about improving your typing speed and accuracy.
                           </p>
                         </div>
@@ -791,40 +811,40 @@ export default function HomePage() {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
                           {/* Card 1 */}
                           <div className="p-8 transition-all duration-300 border-b-2 border-white/30">
-                            <h3 className="text-xl font-semibold text-white mb-4 font-['var(--font-josefin)',sans-serif]">
+                            <h3 className="text-xl font-semibold text-white mb-4" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                               What is the average typing speed?
                             </h3>
-                            <p className="text-blue-100 text-base leading-relaxed font-['var(--font-josefin)',sans-serif]">
+                            <p className="text-white/80 text-base leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                               The average typing speed is around 40 words per minute (wpm). If you want to be very productive, you should aim for a typing speed of 65 to 70 words per minute. It's easy with the right technique!
                             </p>
                           </div>
 
                           {/* Card 2 */}
                           <div className="p-8 transition-all duration-300 border-b-2 border-white/30">
-                            <h3 className="text-xl font-semibold text-white mb-4 font-['var(--font-josefin)',sans-serif]">
+                            <h3 className="text-xl font-semibold text-white mb-4" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                               How do you type faster?
                             </h3>
-                            <p className="text-base text-blue-100 leading-relaxed font-['var(--font-josefin)',sans-serif]">
+                            <p className="text-base text-white/80 leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                               To type faster, you need to learn how to position yourself correctly, use all your fingers, hit the right keys without looking and avoid making mistakes. If you haven't mastered any one of these things, you will benefit from a typing training program.
                             </p>
                           </div>
 
                           {/* Card 3 */}
                           <div className="p-8 transition-all duration-300">
-                            <h3 className="text-xl font-semibold text-white mb-4 font-['var(--font-josefin)',sans-serif]">
+                            <h3 className="text-xl font-semibold text-white mb-4" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                               What is the best application for learning to type?
                             </h3>
-                            <p className="text-base text-blue-100 leading-relaxed font-['var(--font-josefin)',sans-serif]">
+                            <p className="text-base text-white/80 leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                               Typing Pal's training program covers every aspect of proper typing technique, offering a complete and customized program with hundreds of activities that are suitable for beginners and veterans alike. Our method has helped millions of users achieve their goals.
                             </p>
                           </div>
 
                           {/* Card 4 */}
                           <div className="p-8 transition-all duration-300">
-                            <h3 className="text-xl font-semibold text-white mb-4 font-['var(--font-josefin)',sans-serif]">
+                            <h3 className="text-xl font-semibold text-white mb-4" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                               How long will learning to type take?
                             </h3>
-                            <p className="text-base text-blue-100 leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
+                            <p className="text-base text-white/80 leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
                               You will see improvement in a few weeks if you practice often, concentrate on accuracy over speed and adopt the proper technique. The hardest part is forgetting your bad habits, even if it means typing more slowly at first.
                             </p>
                           </div>
@@ -833,7 +853,7 @@ export default function HomePage() {
                   </section>
 
                   {/* CTA Section */}
-                  <div className="flex items-center justify-center mt-8 md:mt-16 p-8 md:p-16 py-12 md:py-20 rounded-2xl md:rounded-3xl max-w-4xl mx-auto shadow-2xl min-h-[300px] md:min-h-[400px]" style={{ backgroundColor: '#62b46f' }}>
+                  <div id="cta-section" className="flex items-center justify-center mt-8 md:mt-16 p-8 md:p-16 py-12 md:py-20 rounded-2xl md:rounded-3xl max-w-4xl mx-auto shadow-2xl min-h-[300px] md:min-h-[400px]" style={{ backgroundColor: '#62b46f' }}>
                                         <div className="flex flex-col items-center justify-center gap-6 md:gap-16 max-w-xl w-full px-4">
                       <div className="text-center">
                                                 <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
@@ -843,7 +863,10 @@ export default function HomePage() {
                           Try Typing Guy for free
                         </p>
                       </div>
-                      <Button className="bg-white text-green-700 hover:bg-white-100 px-6 md:px-12 py-3 md:py-6 text-base md:text-xl rounded-2xl font-semibold transition-all duration-200 group hover:shadow-xl w-full sm:w-auto">
+                      <Button 
+                        onClick={() => document.getElementById('cta-section')?.scrollIntoView({ behavior: 'smooth' })}
+                        className="bg-white text-green-700 hover:bg-white-100 px-6 md:px-12 py-3 md:py-6 text-base md:text-xl rounded-2xl font-semibold transition-all duration-200 group hover:shadow-xl w-full sm:w-auto"
+                      >
                         <span className="mx-1 md:mx-2 my-2 md:my-5">Start Free Test</span>
                         <ChevronRight className="h-4 w-4 md:h-6 md:w-6 group-hover:translate-x-1 transition-transform" />
                       </Button>
@@ -853,7 +876,7 @@ export default function HomePage() {
                             {/* Floating Stats */}
                   <div className="fixed bottom-8 right-8 bg-white/90 backdrop-blur-md rounded-2xl p-4 border border-white/20">
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{wpm}</div>
+              <div className="text-2xl font-bold text-[#2196F3]">{wpm}</div>
               <div className="text-xs text-gray-600 font-medium">Current WPM</div>
             </div>
           </div>
