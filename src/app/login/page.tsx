@@ -139,7 +139,7 @@ export default function LoginPage() {
 
           <div className="mt-6 text-center">
             <p className="text-sm text-gray-600" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
-              Don't have an account?{' '}
+              Don&apos;t have an account?{' '}
               <Link
                 href="/register"
                 className="text-[#2196F3] hover:text-[#2196F3]/80 font-medium transition-colors"

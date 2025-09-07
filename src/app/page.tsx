@@ -832,7 +832,7 @@ export default function HomePage() {
                               What is the average typing speed?
                             </h3>
                             <p className="text-white/80 text-base leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
-                              The average typing speed is around 40 words per minute (wpm). If you want to be very productive, you should aim for a typing speed of 65 to 70 words per minute. It's easy with the right technique!
+                              The average typing speed is around 40 words per minute (wpm). If you want to be very productive, you should aim for a typing speed of 65 to 70 words per minute. It&apos;s easy with the right technique!
                             </p>
                           </div>
 
@@ -842,7 +842,7 @@ export default function HomePage() {
                               How do you type faster?
                             </h3>
                             <p className="text-base text-white/80 leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
-                              To type faster, you need to learn how to position yourself correctly, use all your fingers, hit the right keys without looking and avoid making mistakes. If you haven't mastered any one of these things, you will benefit from a typing training program.
+                              To type faster, you need to learn how to position yourself correctly, use all your fingers, hit the right keys without looking and avoid making mistakes. If you haven&apos;t mastered any one of these things, you will benefit from a typing training program.
                             </p>
                           </div>
 
@@ -852,7 +852,7 @@ export default function HomePage() {
                               What is the best application for learning to type?
                             </h3>
                             <p className="text-base text-white/80 leading-relaxed" style={{ fontFamily: "'Josefin Sans', sans-serif" }}>
-                              Typing Pal's training program covers every aspect of proper typing technique, offering a complete and customized program with hundreds of activities that are suitable for beginners and veterans alike. Our method has helped millions of users achieve their goals.
+                              Typing Pal&apos;s training program covers every aspect of proper typing technique, offering a complete and customized program with hundreds of activities that are suitable for beginners and veterans alike. Our method has helped millions of users achieve their goals.
                             </p>
                           </div>
 
